@@ -26,7 +26,7 @@ public class Topic_02_Selenium_Locator {
         }
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.get("http://live.techpanda.org/index.php/customer/account/create/");
+        driver.get("https://demo.nopcommerce.com/register");
 
     }
      // Luonng testcase s chay tu tren xuong duoi (tinh nang cua TESTNG)
@@ -47,19 +47,18 @@ public class Topic_02_Selenium_Locator {
     @Test
     public void TC_01_ID() {
         // dung bien driver tim element co id la firstname
-       driver.findElement(By.id("firstname")).sendKeys("Tom");
-
+       driver.findElement(By.id("FirstName")).sendKeys("Tom");
     }
 
     @Test
     public void TC_02_Class() {
-      driver.findElement(By.className("page-header-container"));
+      driver.findElement(By.className("header-logo"));
     }
 
 
     @Test
     public void TC_03_Name() {
-       driver.findElement(By.name("success_url"));
+       driver.findElement(By.name("DateOfBirthDay"));
     }
 
     @Test
@@ -70,65 +69,67 @@ public class Topic_02_Selenium_Locator {
     @Test
     public void TC_05_LinkText() {
         // Do chinh xac cao, tuyet doi vi lay toan bo
-      driver.findElement(By.linkText("ABOUT US"));
+      driver.findElement(By.linkText("Shipping & returns"));
     }
 
     @Test
     public void TC_06_Partial_LinkText() {
         //Do chinh xac khong cao vì la tuong doi (lay 1 phan - dau/giua/cuoi)
-        driver.findElement(By.partialLinkText("US"));
+        driver.findElement(By.partialLinkText("vendor account"));
+        driver.findElement(By.partialLinkText("for vendor"));
+        driver.findElement(By.partialLinkText("Apply for vendor"));
     }
     @Test
     public void TC_07_CSS() {
       // CSS va ID
-        driver.findElement(By.cssSelector("input[id='firstname']"));
-        driver.findElement(By.cssSelector("input#firstname"));
-        driver.findElement(By.cssSelector("#firstname"));
+        driver.findElement(By.cssSelector("input[id='FirstName']"));
+        driver.findElement(By.cssSelector("input#FirstName"));
+        driver.findElement(By.cssSelector("#FirstName"));
 
        // CSS va Class
-        driver.findElement(By.cssSelector("div[class='page-header-container']"));
-        driver.findElement(By.cssSelector("div.page-header-container"));
-        driver.findElement(By.cssSelector(".page-header-container"));
+        driver.findElement(By.cssSelector("div[class='page-title']"));
+        driver.findElement(By.cssSelector("div.page-title"));
+        driver.findElement(By.cssSelector(".page-title"));
 
         // CSS va name
-        driver.findElement(By.cssSelector("input[name='success_url']"));
+        driver.findElement(By.cssSelector("input[name='FirstName']"));
 
         // CSS va tagname
         driver.findElement(By.cssSelector("input"));
 
         // CSS va link, phai lam viec voi attribute
-        driver.findElement(By.cssSelector("a[href='http://live.techpanda.org/index.php/about-magento-demo-store/']"));
+        driver.findElement(By.cssSelector("a[href='/customer/addresses']"));
 
         //CSS va partial link
-        driver.findElement(By.cssSelector("a[href*='about-magento-demo-store/']")); // Lay giua
+        driver.findElement(By.cssSelector("a[href*='addresses']")); // Lay giua
      //   driver.findElement(By.cssSelector("a[href^='video.htm']")); // Lay dau
      //   driver.findElement(By.cssSelector("a[href$='video.htm']")); // Lay duoi
 
     }
     // Dac thu Xpath la khong cho viet tat
     @Test
-    public void TC_08_XPath() throws InterruptedException {
+    public void TC_08_XPath(){
         // XPath va ID
-        driver.findElement(By.xpath("//input[@id='firstname']"));
+        driver.findElement(By.xpath("//input[@id='FirstName']"));
 
         // XPath va Class
-        driver.findElement(By.xpath("//div[@class='page-header-container']"));
+        driver.findElement(By.xpath("//div[@class='page-title']"));
 
         // XPath va name
-        driver.findElement(By.xpath("//input[@name='success_url']"));
+        driver.findElement(By.xpath("//input[@name='FirstName']"));
 
         // XPath va tagname
         driver.findElement(By.xpath("//input"));
 
         // XPath va link, phai lam viec voi attribute
-        driver.findElement(By.xpath("//a[@href='http://live.techpanda.org/index.php/about-magento-demo-store/']"));
-        Thread.sleep(3000);
-        //driver.findElement(By.xpath("//a[text()='ABOUT US']"));
-        Thread.sleep(3000);
+        driver.findElement(By.xpath("//a[@href='/customer/addresses']"));
+        //Thread.sleep(3000);
+        driver.findElement(By.xpath("//a[text()='Addresses']"));
+      //  Thread.sleep(3000);
 
         //XPath va partial link
-        driver.findElement(By.xpath("//a[contains(@href,'about-magento-demo-store/')]")); // Lay giua
-        driver.findElement(By.xpath("//a[contains(text(),'us')]")); // Lay dau
+        driver.findElement(By.xpath("//a[contains(@href,'addresses')]")); // Lay giua
+        driver.findElement(By.xpath("//a[contains(text(),'Addresses')]")); // Lay dau
         //driver.findElement(By.xpath("a[href$='video.htm']")); // Lay duoi
     }
     @AfterClass

@@ -32,33 +32,25 @@ public class Topic_03_Relative_Locator {
 
     @Test
     public void TC_01_Relative() {
-        driver.get("https://www.nopcommerce.com/en/register");
+        driver.get("https://demo.nopcommerce.com/login?returnUrl=%2F");
         By loginButtonBy = By.cssSelector("button.login-button");
-//        WebElement loginButtonElement = driver.findElement(By.cssSelector("button.login-button"));
+        WebElement loginButtonElement = driver.findElement(By.cssSelector("button.login-button"));
 
-      //  RelativeLocator.with(By.tagName("label"));
-        // password text box
         By rememberMeCheckboxBy = By.id("RememberMe");
 
-        //Dang tra ve relativeby thằng with
-        /*  RelativeLocator.with(By.tagName("label"))
-                .above(loginButtonBy)
-                .toRightOf(passwordTextBox);  */
-      //  RelativeLocator.with(By.tagName("label")).above(loginButtonElement);
-
-        //muon define nó thành 1 element đề minh tim va thao tac lên element này
-        WebElement forgotPassword = driver.findElement(RelativeLocator.with(By.tagName("label")));
-                       /* .above(loginButtonBy)
-                        .toRightOf(rememberMeCheckboxBy));*/
+        WebElement forgotPassword = driver
+                .findElement(RelativeLocator.with(By.tagName("label"))
+                        .above(loginButtonBy)
+                        .toRightOf(rememberMeCheckboxBy));
 
         // gettech cua element ra
- //       System.out.printf(forgotPassword.getText());
+        System.out.printf(forgotPassword.getText());
 
     }
 
     @AfterClass
     public void afterClass() {
-        driver.quit();
+        //driver.quit();
     }
 
 }
