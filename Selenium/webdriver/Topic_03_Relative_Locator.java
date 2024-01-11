@@ -38,13 +38,19 @@ public class Topic_03_Relative_Locator {
 
         By rememberMeCheckboxBy = By.id("RememberMe");
 
-        WebElement forgotPassword = driver
+        By forgotPasswordText = By.className("forgot-password");
+       // By forgotPasswordText = By.linkText("Forgot password?");
+       // WebElement forgotPasswordText = driver.findElement(By.cssSelector("span.forgot-password"));
+
+
+        WebElement rememberMeTextElement = driver
                 .findElement(RelativeLocator.with(By.tagName("label"))
                         .above(loginButtonBy)
-                        .toRightOf(rememberMeCheckboxBy));
+                        .toRightOf(rememberMeCheckboxBy)
+                        .toLeftOf(forgotPasswordText));
 
         // gettech cua element ra
-        System.out.printf(forgotPassword.getText());
+        System.out.printf(rememberMeTextElement.getText());
 
     }
 

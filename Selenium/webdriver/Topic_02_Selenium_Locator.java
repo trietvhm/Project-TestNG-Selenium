@@ -3,6 +3,7 @@ package webdriver;
 import graphql.schema.SchemaElementChildrenContainer;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterClass;
@@ -13,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Topic_02_Selenium_Locator {
     WebDriver driver;
+    WebElement drivers;
     String projectPath = System.getProperty("user.dir");
     String osName = System.getProperty("os.name");
 
@@ -83,6 +85,8 @@ public class Topic_02_Selenium_Locator {
     public void TC_07_CSS() {
       // CSS va ID
         driver.findElement(By.cssSelector("input[id='FirstName']"));
+     //   driver.findElement(By.cssSelector("input[id=FirstName]"));
+
         driver.findElement(By.cssSelector("input#FirstName"));
         driver.findElement(By.cssSelector("#FirstName"));
 
