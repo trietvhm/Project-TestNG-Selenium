@@ -9,6 +9,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Topic_03_Relative_Locator {
@@ -42,15 +43,24 @@ public class Topic_03_Relative_Locator {
        // By forgotPasswordText = By.linkText("Forgot password?");
        // WebElement forgotPasswordText = driver.findElement(By.cssSelector("span.forgot-password"));
 
+   //     By passwordTextBox = By.id("Password");
+   //     WebElement passwordTextBox = driver.findElement(By.cssSelector(".password"));
+   //     WebElement passwordTextBox = driver.findElement(By.cssSelector("input[class=password]"));
+        WebElement passwordTextBox = driver.findElement(By.cssSelector("input.password"));
 
+        // GUI (location//position) // giong test giao dien, vi tri cua no o dau so voi element khac
         WebElement rememberMeTextElement = driver
                 .findElement(RelativeLocator.with(By.tagName("label"))
+                        .below(passwordTextBox)
                         .above(loginButtonBy)
                         .toRightOf(rememberMeCheckboxBy)
                         .toLeftOf(forgotPasswordText));
 
         // gettech cua element ra
         System.out.printf(rememberMeTextElement.getText());
+
+        List<WebElement> countElement = driver.findElements(RelativeLocator.with(By.cssSelector("a")));
+        System.out.println(countElement.size());
 
     }
 

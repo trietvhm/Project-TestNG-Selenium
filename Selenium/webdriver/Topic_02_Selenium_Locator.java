@@ -86,7 +86,6 @@ public class Topic_02_Selenium_Locator {
       // CSS va ID
         driver.findElement(By.cssSelector("input[id='FirstName']"));
      //   driver.findElement(By.cssSelector("input[id=FirstName]"));
-
         driver.findElement(By.cssSelector("input#FirstName"));
         driver.findElement(By.cssSelector("#FirstName"));
 
@@ -100,6 +99,7 @@ public class Topic_02_Selenium_Locator {
 
         // CSS va tagname
         driver.findElement(By.cssSelector("input"));
+
 
         // CSS va link, phai lam viec voi attribute
         driver.findElement(By.cssSelector("a[href='/customer/addresses']"));
@@ -127,14 +127,15 @@ public class Topic_02_Selenium_Locator {
 
         // XPath va link, phai lam viec voi attribute
         driver.findElement(By.xpath("//a[@href='/customer/addresses']"));
-        //Thread.sleep(3000);
+
         driver.findElement(By.xpath("//a[text()='Addresses']"));
       //  Thread.sleep(3000);
 
         //XPath va partial link
-        driver.findElement(By.xpath("//a[contains(@href,'addresses')]")); // Lay giua
-        driver.findElement(By.xpath("//a[contains(text(),'Addresses')]")); // Lay dau
-        //driver.findElement(By.xpath("a[href$='video.htm']")); // Lay duoi
+        driver.findElement(By.xpath("//a[contains(@href,'addresses')]"));
+
+        driver.findElement(By.xpath("//a[contains(text(),'Addresses')]"));
+
     }
     @AfterClass
     public void afterClass() {
