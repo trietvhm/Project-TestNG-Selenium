@@ -100,7 +100,6 @@ public class Topic_02_Selenium_Locator {
         // CSS va tagname
         driver.findElement(By.cssSelector("input"));
 
-
         // CSS va link, phai lam viec voi attribute
         driver.findElement(By.cssSelector("a[href='/customer/addresses']"));
 
@@ -127,7 +126,7 @@ public class Topic_02_Selenium_Locator {
 
         // XPath va link, phai lam viec voi attribute
         driver.findElement(By.xpath("//a[@href='/customer/addresses']"));
-
+//a[@href='/customer/addresses']
         driver.findElement(By.xpath("//a[text()='Addresses']"));
       //  Thread.sleep(3000);
 
