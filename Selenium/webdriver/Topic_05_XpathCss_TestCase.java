@@ -115,7 +115,7 @@ public class Topic_05_XpathCss_TestCase {
     @Test
     public void Register_06_Invalid_Phone_Number() {
         driver.get("https://alada.vn/tai-khoan/dang-ky.html");
-        //Action
+        //Action // Phone less than 10 chars
         driver.findElement(By.id("txtFirstname")).sendKeys("Joe Biden");
         driver.findElement(By.id("txtEmail")).sendKeys("johnwick@gmail.net");
         driver.findElement(By.id("txtCEmail")).sendKeys("johnwick@gmail.com");
@@ -123,9 +123,23 @@ public class Topic_05_XpathCss_TestCase {
         driver.findElement(By.id("txtCPassword")).sendKeys("123457");
         driver.findElement(By.id("txtPhone")).sendKeys("035335289");
         driver.findElement(By.xpath("//button[text()='ĐĂNG KÝ' and @type='submit']")).click();
-
+        //verify
         Assert.assertEquals(driver.findElement(By.id("txtPhone-error")).getText(), "Số điện thoại phải từ 10-11 số.");
 
+        //Phone more than 11 chars
+        driver.findElement(By.id("txtPhone")).clear();
+        driver.findElement(By.id("txtPhone")).sendKeys("035335289999");
+        driver.findElement(By.xpath("//button[text()='ĐĂNG KÝ' and @type='submit']")).click();
+        //verify
+        Assert.assertEquals(driver.findElement(By.id("txtPhone-error")).getText(), "Số điện thoại phải từ 10-11 số.");
+
+        // Phone different from the phone center number
+        driver.findElement(By.id("txtPhone")).clear();
+        driver.findElement(By.id("txtPhone")).sendKeys("12345678910");
+        driver.findElement(By.xpath("//button[text()='ĐĂNG KÝ' and @type='submit']")).click();
+
+        //verify
+        Assert.assertEquals(driver.findElement(By.id("txtPhone-error")).getText(), "Số điện thoại bắt đầu bằng: 09 - 03 - 012 - 016 - 018 - 019 - 088 - 03 - 05 - 07 - 08");
     }
 
     @AfterClass
