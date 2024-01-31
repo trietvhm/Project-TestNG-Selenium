@@ -1,17 +1,14 @@
 package webdriver;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
-public class Topic_00_Template {
+public class Topic_09_Default_Dropdown {
     WebDriver driver;
 
     // khoi tao trinh duyet san

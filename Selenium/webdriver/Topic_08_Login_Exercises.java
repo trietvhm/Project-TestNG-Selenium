@@ -108,13 +108,16 @@ public class Topic_08_Login_Exercises {
         Assert.assertEquals(driver.findElement(By.xpath("//li[@class='success-msg']//span")).getText(),"Thank you for registering with Main Website Store.");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@class='welcome-msg']//strong")).getText(),"Hello, " + fullName + "!");
 
-        // locator khó
+               // locator khó
         String contactInfor  = driver.findElement(By.xpath("//h3[text()='Contact Information']/parent::div/following-sibling::div/p")).getText();
         Assert.assertTrue(contactInfor.contains(fullName));
         Assert.assertTrue(contactInfor.contains(emailAddress));
 
+       // Assert.assertTrue(driver.findElement(By.xpath("//h3[text()='Contact Information']/parent::div/following-sibling::div/p")).getText());
 
-        //logout// locator khó
+     //   driver.findElement().getText().contains(); contains trả ve boolean
+
+        //logout    // locator khó
         driver.findElement(By.cssSelector("a.skip-account")).click();
         sleepInSecond(3);
         driver.findElement(By.cssSelector("li.last>a[title='Log Out']")).click();
