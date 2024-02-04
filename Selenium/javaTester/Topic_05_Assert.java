@@ -25,6 +25,7 @@ public class Topic_05_Assert {
         // Mong muon dieu kien tra ve la sai thi dung assertFalse
         Assert.assertFalse(driver.getPageSource().contains("Create a new account"));
 
+
         driver.findElement(By.id("")).isDisplayed();
         driver.manage().timeouts();
     }
