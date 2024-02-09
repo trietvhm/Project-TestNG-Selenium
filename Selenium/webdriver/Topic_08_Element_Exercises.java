@@ -1,6 +1,7 @@
 package webdriver;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -10,7 +11,6 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
 
 
 import java.time.Duration;
@@ -114,12 +114,15 @@ public class Topic_08_Element_Exercises {
         driver.get("https://login.mailchimp.com/signup/");
         driver.findElement((By.cssSelector("input#email"))).sendKeys("meat100kg@gmail.com");
 
-        // case 7 - Empty case
-        driver.findElement((By.cssSelector("input#new_password"))).clear();
-
+        // case 0 - Empty case
+       /* driver.findElement((By.cssSelector("input#new_password"))).clear();
+        sleepInSecond(5);*/
         WebElement element = driver.findElement(By.cssSelector("button#create-account-enabled"));
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element).click().perform();
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
+
+        js.executeScript("arguments[0].click();", element);
         sleepInSecond(2);
 
         Assert.assertTrue(driver.findElement(By.cssSelector("li.lowercase-char.not-completed")).isDisplayed());
@@ -191,7 +194,7 @@ public class Topic_08_Element_Exercises {
         // case 6 - Valid
         driver.findElement((By.cssSelector("input#new_password"))).clear();
         driver.findElement((By.cssSelector("input#new_password"))).sendKeys("Auto123@1");
-        sleepInSecond(2);
+        sleepInSecond(10);
 
         Assert.assertFalse(driver.findElement(By.cssSelector("li.lowercase-char.completed")).isDisplayed());
         Assert.assertFalse(driver.findElement(By.cssSelector("li.uppercase-char.completed")).isDisplayed());
@@ -200,20 +203,6 @@ public class Topic_08_Element_Exercises {
         Assert.assertFalse(driver.findElement(By.cssSelector("li[class='8-char completed']")).isDisplayed());
         Assert.assertFalse(driver.findElement(By.cssSelector("li.username-check.completed")).isDisplayed());
 
-        /*// case 7 - Empty case
-        driver.findElement((By.cssSelector("input#new_password"))).clear();
-
-        WebElement element = driver.findElement(By.cssSelector("button#create-account-enabled"));
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element).click().perform();
-        sleepInSecond(2);
-
-        Assert.assertTrue(driver.findElement(By.cssSelector("li.lowercase-char.not-completed")).isDisplayed());
-        Assert.assertTrue(driver.findElement(By.cssSelector("li.uppercase-char.not-completed")).isDisplayed());
-        Assert.assertTrue(driver.findElement(By.cssSelector("li.number-char.not-completed")).isDisplayed());
-        Assert.assertTrue(driver.findElement(By.cssSelector("li.special-char.not-completed")).isDisplayed());
-        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='8-char not-completed']")).isDisplayed());
-        Assert.assertTrue(driver.findElement(By.cssSelector("li.username-check.not-completed")).isDisplayed());*/
     }
 
     @AfterClass
@@ -221,7 +210,7 @@ public class Topic_08_Element_Exercises {
         //driver.quit();
     }
 
-    public void sleepInSecond(long timeInSecond)  {
+    public void sleepInSecond(long timeInSecond) {
         try {
             Thread.sleep(timeInSecond * 1000);
         } catch (InterruptedException e) {
