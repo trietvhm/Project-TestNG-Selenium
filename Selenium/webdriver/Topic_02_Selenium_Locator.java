@@ -66,11 +66,11 @@ public class Topic_02_Selenium_Locator {
     @Test
     public void TC_04_Tagname() {
         driver.findElement(By.tagName("input"));
-    }
+    } // ten the
 
     @Test
     public void TC_05_LinkText() {
-        // Do chinh xac cao, tuyet doi vi lay toan bo
+        // Do chinh xac cao, tuyet doi vi lay toan bo text chứa link
       driver.findElement(By.linkText("Shipping & returns"));
     }
 

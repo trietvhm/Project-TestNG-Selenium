@@ -16,7 +16,7 @@ import java.util.List;
 public class Topic_10_Custom_Dropdown {
     WebDriver driver;
 
-    // wait tường minh: trang thai cụ thểcho elelment
+    // WAIT tường minh: trang thai cụ thểcho elelment
     // chờ cho element thỏa mãn 1 dk nào đó
     // Visible/ Invisible/ presence (co o trong HTML nhung khong hien thi)/
     // number of element/ Clickable
@@ -31,7 +31,7 @@ public class Topic_10_Custom_Dropdown {
 
         explicitWait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
-        // wait ngam dinh: ko ro rang cho 1 trang thai cu the nao cua element het
+        // WAIT ngam dinh: ko ro rang cho 1 trang thai cu the nao cua element het
         // ngam dinh cho viec tim element - findelement(s)
         // chờ cho element duoc tim thay
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));

@@ -29,7 +29,7 @@ public class Topic_15_popUp_01 {
         driver.findElement(By.cssSelector("button.login_")).click();
         sleepInSecond(2);
 
-        By loginPopup = By.cssSelector("div[id='modal-login-v1'][style]>div");
+        By loginPopup = By.cssSelector("div[id='modal-login-v1'][style] div.modal-content");
 
         //kiem tra login popup dang hien thi
         Assert.assertTrue(driver.findElement(loginPopup).isDisplayed());
@@ -115,7 +115,7 @@ public class Topic_15_popUp_01 {
         sleepInSecond(2);
 
         //khi popup dong lai thi HTML khong con trong DOM(document object model) nua
-    //    Assert.assertFalse(driver.findElement(loginPopup).isDisplayed()); // dung cach nay kiem tra se bi sai
+    //  Assert.assertFalse(driver.findElement(loginPopup).isDisplayed()); // dung cach nay kiem tra se bi sai
         // neu nhu khong co trong DOM thi dung isDisplayed khong được
         // do findelement khong tim thay
 
@@ -143,15 +143,17 @@ public class Topic_15_popUp_01 {
         driver.findElement(By.xpath("//div[text()='Sign Up']/parent::div/parent::div/child::img")).click();
         sleepInSecond(2);
 
-        //khi popup dong lai thi HTML khong con trong DOM(document object model) nua
-        //    Assert.assertFalse(driver.findElement(loginPopup).isDisplayed()); // dung cach nay kiem tra se bi sai
+        // khi popup dong lai thi HTML khong con trong DOM(document object model) nua
+
+        // Assert.assertFalse(driver.findElement(loginPopup).isDisplayed());
+        // dung cach nay kiem tra se bi sai
         // neu nhu khong co trong DOM thi dung isDisplayed khong được
-        // do findelement khong tim thay
+        // do findElement khong tim thay
 
 
-        // findElement should not be used to look for non-present elements,
+        // findElement should not be used to look for NON-PRESENT elements,
         // use findElements(By) and assert zero length response instead
-        // khong tim thay khong danh fail\
+        // khong tim thay khong danh fail
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         Assert.assertEquals(driver.findElements(loginPopup).size(),0);
 

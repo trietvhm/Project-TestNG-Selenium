@@ -47,6 +47,7 @@ public class Topic_14_Actions {
         WebElement ageTextBox = driver.findElement(By.cssSelector("input#age"));
 
         actions.moveToElement(ageTextBox).perform();
+        driver.findElement(By.cssSelector("")).click();
 
         Assert.assertEquals(driver.findElement(By.cssSelector("div.ui-tooltip-content")).getText(),
                 "We ask for your age only for statistical purposes.");
@@ -82,7 +83,7 @@ public class Topic_14_Actions {
 
         driver.findElement(By.xpath("//div[contains(@class,'fhs_menu_content')]//a[text()='Thiết Bị Số - Phụ Kiện Số']")).click();
 
-        //  Assert.assertEquals(driver.findElement(By.cssSelector("ol.breadcrumb strong")).getText(),"THIẾT BỊ SỐ - PHỤ KIỆN SỐ");
+        //Assert.assertEquals(driver.findElement(By.cssSelector("ol.breadcrumb strong")).getText(),"THIẾT BỊ SỐ - PHỤ KIỆN SỐ");
 
         Assert.assertTrue(driver.findElement(By.xpath("//ol[@class='breadcrumb']//strong[text()='Thiết Bị Số - Phụ Kiện Số']")).isDisplayed());
 
@@ -157,6 +158,7 @@ public class Topic_14_Actions {
 
         // chon 13,14,15
         actions.keyDown(Keys.CONTROL).perform();//nhan phim ctrl xuong (chưa nhả ra)
+
         actions.click(allNumbers.get(12))
                 .click(allNumbers.get(13))
                 .click(allNumbers.get(14))

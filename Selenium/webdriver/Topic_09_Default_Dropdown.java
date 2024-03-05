@@ -40,7 +40,6 @@ public class Topic_09_Default_Dropdown {
         driver.findElement(By.cssSelector("a.ico-register")).click();
         sleepInSecond(3);
 
-
         driver.findElement(By.cssSelector("span.male input#gender-male")).click();
         sleepInSecond(3);
 
