@@ -10,12 +10,21 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.time.Duration;
 
 public class Topic_22_Wait_07_Explicit_03 {
     WebDriver driver;
 
     WebDriverWait explicitWait;
+    String projectPath = System.getProperty("user.dir");
+    String hcmName = "saigon.jpg";
+    String dnName = "danang.jpg";
+    String hnName = "hanoi.jpg";
+
+    String hcmFilePath = projectPath + File.separator + "uploadFiles" + File.separator + hcmName;
+    String dnFilePath = projectPath + File.separator + "uploadFiles" + File.separator + dnName;
+    String hnFilePath = projectPath + File.separator + "uploadFiles" + File.separator + hnName;
 
     // khoi tao trinh duyet san
     @BeforeClass
@@ -33,14 +42,14 @@ public class Topic_22_Wait_07_Explicit_03 {
         Assert.assertEquals(driver.findElement(By.xpath("//span[@id='ctl00_ContentPlaceholder1_Label1']")).getText(),
                 "No Selected Dates to display.");
 
-        driver.findElement(By.xpath("//a[text()='17']")).click();
+        driver.findElement(By.xpath("//a[text()='5']")).click();
 
-        // Wait cho LOADING ICON bien mat trong vong X giây
+        // Wait cho LOADING ICON bien mat trong vong X giây 
         explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(
                 By.xpath("//div[contains(@id,'RadCalendar1')]/div[@class='raDiv']")));
 
         Assert.assertEquals(driver.findElement(By.xpath("//span[@id='ctl00_ContentPlaceholder1_Label1']")).getText(),
-                "Saturday, February 17, 2024");
+                "Tuesday, March 5, 2024");
 
     }
 
@@ -48,12 +57,12 @@ public class Topic_22_Wait_07_Explicit_03 {
     public void TC_02_GoFiles() {
         driver.get("https://gofile.io/welcome");
 
-        //Wait icon loading disssapear
+        // Wait icon loading disssapear
         // Tra ve kieu boolean
         /*explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(
                 By.cssSelector("div#mainContent div.spinner-border")));*/
 
-        // ===> AssertTrue la mat đi roi
+        // mong doi la mat di roi ===> AssertTrue la mat đi roi
         // Wait + verify spiner biến mất
         Assert.assertTrue(explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(
                 By.cssSelector("div#mainContent div.spinner-border"))));
@@ -67,13 +76,34 @@ public class Topic_22_Wait_07_Explicit_03 {
         /*Assert.assertTrue(explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(
                 By.cssSelector("div#mainContent div.spinner-border"))));*/
 
+        // tra ve boolean nen co the upload file duoc
         Assert.assertTrue(explicitWait.until(ExpectedConditions.invisibilityOfAllElements(
                 driver.findElements(By.cssSelector("div.spinner-border")))));
 
         //explicitWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div#filesUpload button.btn-primary"))).click();
 
-        // chưa hoc  hic
-        //driver.findElement(By.cssSelector("input[type='file']")).sendKeys("");
+        driver.findElement(By.cssSelector("input[type='file']")).sendKeys(hcmFilePath + "\n" + dnFilePath + "\n" + hnFilePath);
+
+        Assert.assertTrue(explicitWait.until(ExpectedConditions.invisibilityOfAllElements(
+                driver.findElements(By.cssSelector("div.spinner-border")))));
+
+        // Wait những thanh progress bar bien mat
+        explicitWait.until(ExpectedConditions.invisibilityOfAllElements(
+                driver.findElements(By.cssSelector("div.progress"))));
+
+        // Wait cho no ready trước da roi moi click
+        explicitWait.until(ExpectedConditions.elementToBeClickable(
+                By.cssSelector("div.mainUploadSuccessLink a.ajaxLink"))).click();
+
+        // Wait + Verify button play co tai tung hinh duoc upload
+        Assert.assertTrue(explicitWait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//span[text()='"+ hcmName +"']//ancestor::div[contains(@class,'text-md-start')]/following-sibling::div//span[text()='Download']"))).isDisplayed());
+
+        Assert.assertTrue(explicitWait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//span[text()='"+ dnName +"']//ancestor::div[contains(@class,'text-md-start')]/following-sibling::div//span[text()='Download']"))).isDisplayed());
+
+        Assert.assertTrue(explicitWait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//span[text()='"+ hnName +"']//ancestor::div[contains(@class,'text-md-start')]/following-sibling::div//span[text()='Download']"))).isDisplayed());
 
     }
 

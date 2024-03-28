@@ -26,7 +26,7 @@ public class Topic_05_Assert {
         Assert.assertFalse(driver.getPageSource().contains("Create a new account"));
 
 
-        driver.findElement(By.id("")).isDisplayed();
-        driver.manage().timeouts();
+        //driver.findElement(By.id("")).isDisplayed();
+        //driver.manage().timeouts();
     }
 }

@@ -33,7 +33,7 @@ public class Topic_00_Template {
     public void TC_01_CHECK() {
         driver.get("https://omayo.blogspot.com/");
         js.executeScript("arguments[0].scrollIntoView();", driver.findElement(By.cssSelector("input#confirm")));
-        actions.click(driver.findElement(By.cssSelector("input#hbutton"))).perform();
+        //actions.click(driver.findElement(By.cssSelector("input#hbutton"))).perform();
         // actions.click(driver.findElement(By.cssSelector("input#confirm"))).perform();
 
         //js.executeScript("arguments[0].click();",driver.findElement(By.cssSelector("input#hbutton")));
