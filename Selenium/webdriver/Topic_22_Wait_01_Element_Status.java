@@ -90,8 +90,6 @@ public class Topic_22_Wait_01_Element_Status {
         // KIEM  tra 1 element dang hien thi
         // Chay lau/ket qua step nay Failed
         //Assert.assertFalse(driver.findElement(reconfirmEmail).isDisplayed());
-
-
     }
     @Test
     public void TC_03_Presence() {
@@ -124,7 +122,7 @@ public class Topic_22_Wait_01_Element_Status {
         driver.findElement(By.xpath("//div[text()='Sign Up']/parent::div/preceding-sibling::img")).click();
         sleepInSecond(3);
 
-        // Dieu kien 3Element không hiển thị trên UI và không có trong DOM (HTML)
+        // Dieu kien 3 Element KHÔNG hiển thị trên UI và KHÔNG có trong DOM (HTML)
         // Bắt buộc của hàm này phải là 1 element, chu no khong dung By
         // 1 element có mặt o truoc do va hiện tai bay gio no khong co nua
         // invisible WAIT đúng thời diem nay, con khong quan tam den thoi diem truoc do

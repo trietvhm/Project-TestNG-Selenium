@@ -58,8 +58,11 @@ public class Topic_09_Default_Dropdown {
         Assert.assertFalse(day.isMultiple());
 
         //verify so luong trong dropdown nay la 32 item
+        //Select day = new Select(driver.findElement(By.name("DateOfBirthDay")));
         List<WebElement> dayOptions = day.getOptions();
         Assert.assertEquals(dayOptions.size(),32);
+
+
         //Assert.assertEquals(day.getOptions().size(),32);
 
         Select month = new Select(driver.findElement(By.name("DateOfBirthMonth")));
@@ -98,11 +101,14 @@ public class Topic_09_Default_Dropdown {
         Assert.assertEquals(driver.findElement(By.cssSelector("input#FirstName")).getAttribute("value"), firstName);
         Assert.assertEquals(driver.findElement(By.cssSelector("input#LastName")).getAttribute("value"), lastName);
 
-        Assert.assertEquals(new Select(driver.findElement(By.name("DateOfBirthDay"))).getFirstSelectedOption().getText(),Day);
+        Assert.assertEquals(new Select(driver.findElement(By.name("DateOfBirthDay")))
+                .getFirstSelectedOption().getText(),Day);
         Assert.assertEquals(new Select(driver.findElement(By.name("DateOfBirthMonth"))).getFirstSelectedOption().getText(),Month);
         Assert.assertEquals(new Select(driver.findElement(By.name("DateOfBirthYear"))).getFirstSelectedOption().getText(),Year);
 
-        Assert.assertEquals(driver.findElement(By.cssSelector("input#Email")).getAttribute("value"), emailAddress);
+        Assert.assertEquals(driver.findElement(By.cssSelector("input#Email"))
+                .getAttribute("value"), emailAddress);
+
         Assert.assertEquals(driver.findElement(By.cssSelector("input#Company")).getAttribute("value"), companyName);
 
     }

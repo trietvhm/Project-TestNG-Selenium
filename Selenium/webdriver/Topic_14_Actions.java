@@ -106,6 +106,7 @@ public class Topic_14_Actions {
 
         sleepInSecond(3);
 
+
         //Tong cac so da chon
         List<WebElement> allNumbersSelected = driver.findElements(By.cssSelector("li.ui-state-default.ui-selected"));
         Assert.assertEquals(allNumbersSelected.size(), 12);

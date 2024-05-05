@@ -33,6 +33,8 @@ public class Topic_11_Custom_Dropdown_2 {
     @Test
     public void TC_01_JQuery() {
         driver.get("https://jqueryui.com/resources/demos/selectmenu/default.html");
+        // parentCSS là HTML của nút xổ xuống
+        // childrentCSS là HTML của từng phần tử chứa text khi được xổ ra
 
         selectItemInDropdown("span#speed-button", "ul#speed-menu div", "Faster");
         sleepInSecond(3);
@@ -121,7 +123,7 @@ public class Topic_11_Custom_Dropdown_2 {
 
         for (WebElement items : allItems) {
             String textItems = items.getText();
-            if (textItems.equals(itemTextExpected)) {
+            if (textItems.trim().equals(itemTextExpected)) {
                 items.click();
                 break;
             }

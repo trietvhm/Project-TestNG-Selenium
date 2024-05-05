@@ -22,7 +22,7 @@ public class Topic_21_Upload_File {
     String dnName = "danang.jpg";
     String hnName = "hanoi.jpg";
 
-    String hcmFilePath = projectPath + File.separator + "uploadFiles" + File.separator + hcmName;
+    String hcmFilePath = projectPath + File.separator + "uploadFiles" + File.separator + hcmName; // File.separator: Biến này tự động chèn ký tự phân cách đường dẫn thích hợp dựa trên hệ điều hành.
     String dnFilePath = projectPath + File.separator + "uploadFiles" + File.separator + dnName;
     String hnFilePath = projectPath + File.separator + "uploadFiles" + File.separator + hnName;
 
@@ -99,6 +99,11 @@ public class Topic_21_Upload_File {
         Assert.assertTrue(driver.findElement(By.xpath("//p[@class='name']/a[text()='" + hcmName + "']")).isDisplayed());
         Assert.assertTrue(driver.findElement(By.xpath("//p[@class='name']/a[text()='" + dnName + "']")).isDisplayed());
         Assert.assertTrue(driver.findElement(By.xpath("//p[@class='name']/a[text()='" + hnName + "']")).isDisplayed());
+
+        System.out.println(hcmFilePath);
+        System.out.println(hnFilePath);
+        System.out.println(dnFilePath);
+        System.out.println(projectPath);
     }
 
     @Test

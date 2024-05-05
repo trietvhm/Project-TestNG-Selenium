@@ -47,7 +47,6 @@ public class Topic_10_Custom_Dropdown {
         driver.findElement(By.cssSelector("span#number-button")).click();
         sleepInSecond(10);
 
-
 //        B2: Có 2 trường hợp
 //        TH1: nó sẽ xổ ra và chứa hết tất cả các item
 //        Th2: nó sẽ xổ ra nhưng chỉ chứa 1 phần nhưng đang load thêm vì có dropdown có vài ngàn items ===> phải có cơ chế wait để cho nó load hết
@@ -56,7 +55,7 @@ public class Topic_10_Custom_Dropdown {
         explicitWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("ul#number-menu div")));
 
         // allitems chua 19 items bên trong
-        // list dđang chứa 19 item có kieu du lieu la webElement
+        // list đang chứa 19 item có kieu du lieu la webElement
         List<WebElement> allItems = driver.findElements(By.cssSelector("ul#number-menu div"));
 
         // for each

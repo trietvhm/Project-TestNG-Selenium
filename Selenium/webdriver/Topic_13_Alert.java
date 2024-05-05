@@ -41,7 +41,10 @@ public class Topic_13_Alert {
         // Neu het thoi gian ma chua xuat hien thi moi fail
         // Vua wait, vua switch
         // trong truong hop click xong ma thay lien thi switch qua luon khoi can wait
-        // Wait se dsam bao alert se xuat hien truoc khi no thao tac
+        // Wait se dam bao alert se xuat hien truoc khi no thao tac
+        /*Phương thức driver.switchTo().alert() trong Selenium được sử dụng để chuyển trình điều khiển
+        (driver) sang cửa sổ cảnh báo (alert) hiện đang hoạt động trên trang web. Khi cửa sổ cảnh báo hiển thị,
+        nó cần được điều khiển bởi WebDriver để có thể thao tác với các yêu cầu hoặc xác nhận mà trang web yêu cầu*/
         Alert alert = explicitWait.until(ExpectedConditions.alertIsPresent());
 
         // Alert alert =  driver.switchTo().alert(); // ko tìm thay alert la fail ngay nen dung wait
@@ -109,26 +112,26 @@ public class Topic_13_Alert {
         // vi tinh bao mat
         // thong qua chorm devtool protocol (CDP) --> chorm/edge
 
-        //  cach 1: nhap tthang83username/password vào đường link
-        /*  driver.get("https://" + username + ":" + password + "@the-internet.herokuapp.com/basic_auth");
+        //  cach 1: nhap thang username/password vào đường link
+          driver.get("https://" + username + ":" + password + "@the-internet.herokuapp.com/basic_auth");
           Assert.assertEquals(driver.findElement(By.cssSelector("div.example p")).getText(),
                 "Congratulations! You must have the proper credentials.");
 
         Assert.assertTrue(driver.findElement(
-                By.xpath("//p[contains(text(),'Congratulations! You must have the proper credentials.')]")).isDisplayed());*/
+                By.xpath("//p[contains(text(),'Congratulations! You must have the proper credentials.')]")).isDisplayed());
 
         // cach 2: tu page A thao tac len 1 element no se qua page B (can phai thao tac voi Authen)
-        driver.get("http://the-internet.herokuapp.com/");
+       /* driver.get("http://the-internet.herokuapp.com/");
         String authenLinkUrl = driver.findElement(By.xpath("//a[text()='Basic Auth']")).getAttribute("href");
 
-        /*String[] authenArray = authenLinkUrl.split("//");
+        *//*String[] authenArray = authenLinkUrl.split("//");
         System.out.println(authenArray[0]);
         System.out.println(authenArray[1]);
-        driver.get(authenArray[0] + "//" + username + ":" + password + "@" + authenArray[1]);*/
+        driver.get(authenArray[0] + "//" + username + ":" + password + "@" + authenArray[1]);*//*
         driver.get(getAuthenAlertByUrl(authenLinkUrl, username, password));
 
         Assert.assertTrue(driver.findElement(
-                By.xpath("//p[contains(text(),'Congratulations! You must have the proper credentials.')]")).isDisplayed());
+                By.xpath("//p[contains(text(),'Congratulations! You must have the proper credentials.')]")).isDisplayed());*/
     }
 
     @Test

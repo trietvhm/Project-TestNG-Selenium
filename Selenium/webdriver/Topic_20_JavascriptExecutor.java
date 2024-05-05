@@ -72,7 +72,7 @@ public class Topic_20_JavascriptExecutor {
 
         navigateToUrlByJS("https://www.facebook.com/");
         sleepInSecond(3);
-        Assert.assertEquals((String) jsExecutor.executeScript("return document.domain"),"facebook.com");
+        Assert.assertEquals((String) jsExecutor.executeScript("return document.domain"), "facebook.com");
     }
 
     @Test
@@ -80,7 +80,7 @@ public class Topic_20_JavascriptExecutor {
         driver.get("https://sieuthimaymocthietbi.com/account/register");
 
         driver.findElement(By.xpath("//button[text()='Đăng ký']")).click();
-        
+
 
     }
 

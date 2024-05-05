@@ -92,7 +92,7 @@ public class Topic_08_Login_Exercises {
         driver.findElement(By.xpath("//a[@title='Create an Account']")).click();
         sleepInSecond(3);
 
-        String firsName = "triet", lastName = "vu", emailAddress= getEmailAddress(), password ="123456789";
+        String firsName = "triet", lastName = "vu", emailAddress= getEmailRandom(), password ="123456789";
         String fullName = firsName + " " + lastName;
 
         driver.findElement(By.cssSelector("input#firstname")).sendKeys(firsName);
@@ -108,14 +108,15 @@ public class Topic_08_Login_Exercises {
         Assert.assertEquals(driver.findElement(By.xpath("//li[@class='success-msg']//span")).getText(),"Thank you for registering with Main Website Store.");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@class='welcome-msg']//strong")).getText(),"Hello, " + fullName + "!");
 
-               // locator khó
-        String contactInfor  = driver.findElement(By.xpath("//h3[text()='Contact Information']/parent::div/following-sibling::div/p")).getText();
+        // locator khó
+        String contactInfor  = driver.findElement(
+                By.xpath("//h3[text()='Contact Information']/parent::div/following-sibling::div/p")).getText();
         Assert.assertTrue(contactInfor.contains(fullName));
         Assert.assertTrue(contactInfor.contains(emailAddress));
 
        // Assert.assertTrue(driver.findElement(By.xpath("//h3[text()='Contact Information']/parent::div/following-sibling::div/p")).getText());
 
-     //   driver.findElement().getText().contains(); contains trả ve boolean
+       //driver.findElement(By.xpath("")).getText().contains();// contains trả ve boolean
 
         //logout    // locator khó
         driver.findElement(By.cssSelector("a.skip-account")).click();
@@ -134,9 +135,11 @@ public class Topic_08_Login_Exercises {
 
 
         //verify success login
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@class='welcome-msg']//strong")).getText(),"Hello, " + fullName + "!");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@class='welcome-msg']//strong")).getText(),
+                "Hello, " + fullName + "!");
 
-        contactInfor  = driver.findElement(By.xpath("//h3[text()='Contact Information']/parent::div/following-sibling::div/p")).getText();
+        contactInfor  = driver.findElement(By.xpath("//h3[text()='Contact Information']/parent::div/following-sibling::div/p")).
+                getText();
         Assert.assertTrue(contactInfor.contains(fullName));
         Assert.assertTrue(contactInfor.contains(emailAddress));
 
@@ -164,7 +167,7 @@ public class Topic_08_Login_Exercises {
 
     }
 
-    public String getEmailAddress() {
+    public String getEmailRandom() {
         Random rand = new Random();
         /*String emailAddress = "automation" + rand.nextInt(9999) + "@gmail.net";
         return emailAddress;*/
