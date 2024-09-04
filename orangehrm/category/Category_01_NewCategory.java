@@ -28,4 +28,8 @@ public class Category_01_NewCategory {
         System.out.println("After Class");
     }
 
+    public static void main(String[] args) {
+
+    }
+
 }
